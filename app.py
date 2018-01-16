@@ -51,8 +51,8 @@ def getCellInfoInArea():
 	database = mongoClient[db_name]
 	collection = database[transactions_collection]
 
-	cells = collection.find({'coords':{'$near':[float(args['phoneLat']), float(args['phoneLong'])], '$maxDistance':max_distance}},\
-							{'_id':False, 'coords.type':False})
+	cells = collection.find({'coords':{'$near':[float(args['phoneLat']), float(args['phoneLong'])], '$maxDistance':1}},\
+							{'_id':False, 'coords.type':False}).limit(12)
 
 	if cells == None:
 		abort(404)
