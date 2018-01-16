@@ -56,8 +56,13 @@ def getCellInfoInArea():
 
 	if cells == None:
 		abort(404)
-	print(cells.count())
+
 	return dumps(cells), 200
 
+# just a test url, to check service functionality.
+@app.route('/test', methods=['GET'])
+def test():
+	return make_response(jsonify({'Test': 'Connection successful'}), 200)
+
 if __name__ == '__main__':
-	app.run()
+	app.run(host='0.0.0.0')
